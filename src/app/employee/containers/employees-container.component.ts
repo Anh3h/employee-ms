@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { EmployeeService } from '../services/employee.service';
+
+import { tap } from 'rxjs/operators'
 
 @Component({
   templateUrl: './employees-container.component.html',
@@ -6,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployeesContainerComponent implements OnInit {
 
-  constructor() { }
+  employees;
+
+  constructor(private employeeService: EmployeeService) { }
 
   ngOnInit() {
+    this.employees = this.employeeService.getEmployees();
   }
 
 }

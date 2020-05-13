@@ -1,0 +1,8 @@
+<div>
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let item of displayedItems">
+            <span>{{ item[attribute] }}</span>
+        </li>
+    </ul>
+    <pagination [totalItems]="totalItems.length" [itemsPerPage]="_pageSize" (pageChanged)="pageChanged($event)"></pagination>
+</div>
