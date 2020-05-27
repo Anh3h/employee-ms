@@ -1,3 +1,8 @@
 <div class="container">
-    <app-list-pagination [totalItems]="employees" [pageSize]="8" [attribute]="'employee_name'"></app-list-pagination>
+    <app-list-pagination
+        [totalItems]="employees"
+        [pageSize]="8"
+        [attribute]="'name'"
+        (update)="updateEmployee($event)">
+    </app-list-pagination>
 </div>

@@ -9,12 +9,11 @@ import { tap } from 'rxjs/operators'
 })
 export class EmployeesContainerComponent implements OnInit {
 
-  employees;
+  employees$;
 
   constructor(private employeeService: EmployeeService) { }
 
   ngOnInit() {
-    this.employees = this.employeeService.getEmployees();
+    this.employees$ = this.employeeService.getEmployees();
   }
-
 }

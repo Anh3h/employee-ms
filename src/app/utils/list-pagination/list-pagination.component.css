@@ -1,3 +1,11 @@
 ul {
     margin-bottom: 2%;
 }
+
+.buttons {
+    float: right;
+}
+
+.btn-primary{
+    margin-right: 1rem;
+}

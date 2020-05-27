@@ -1,0 +1,31 @@
+<div>
+    <div class="card">
+        <form [formGroup]="employeeForm" (ngSubmit)="updateForm()">
+            <div class="form-group row">
+                <label for="name" class="col-lg-2">Name:</label>
+                <div class="col-lg-10 name">
+                    <input type="text" id="name" class="form-control" formControlName="name" required/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="form-group row">
+                        <label for="salary" class="col-lg-3">Salary:</label>
+                        <div class="col-md-9">
+                            <input type="number" id="salary" class="form-control" [min]="minSalary" formControlName="salary" required/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group row">
+                        <label for="salary" class="col-lg-3">Age:</label>
+                        <div class="col-md-9">
+                            <input type="number" id="salary" class="form-control" formControlName="age" [min]="minAge" required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>

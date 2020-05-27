@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { PageChangedEvent } from 'ngx-bootstrap/pagination/public_api';
 
 @Component({
@@ -30,6 +30,9 @@ export class ListPaginationComponent implements OnInit {
     this.displayedItems = this._totalItems.slice(0, this.pageSize);
   }
 
+  @Output()
+  update = new EventEmitter<string>();
+
   get totalItems() {
     return this._totalItems;
   }
@@ -43,5 +46,9 @@ export class ListPaginationComponent implements OnInit {
     const startIndex = (event.page - 1) * event.itemsPerPage;
     const endIndex = event.page * event.itemsPerPage;
     this.displayedItems = this._totalItems.slice(startIndex, endIndex);
+  }
+
+  updateItem(id: string): void {
+    this.update.emit(id);
   }
 }
