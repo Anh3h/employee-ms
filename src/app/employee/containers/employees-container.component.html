@@ -1,3 +1,4 @@
 <app-employees
-    [employees]="employees$ | async">
+    [employees]="employees$ | async"
+    (delete)="deleteEmployee($event)">
 </app-employees>

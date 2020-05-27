@@ -33,6 +33,9 @@ export class ListPaginationComponent implements OnInit {
   @Output()
   update = new EventEmitter<string>();
 
+  @Output()
+  delete = new EventEmitter<string>();
+
   get totalItems() {
     return this._totalItems;
   }
@@ -48,7 +51,11 @@ export class ListPaginationComponent implements OnInit {
     this.displayedItems = this._totalItems.slice(startIndex, endIndex);
   }
 
-  updateItem(id: string): void {
+  updateItem(id): void {
     this.update.emit(id);
+  }
+
+  deleteItem(id): void {
+    this.delete.emit(id);
   }
 }

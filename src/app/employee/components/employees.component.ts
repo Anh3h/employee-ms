@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { Employee } from '../models/Employee';
 
@@ -12,13 +12,20 @@ export class EmployeesComponent implements OnInit {
   @Input()
   employees: Employee[];
 
+  @Output()
+  delete = new EventEmitter<String>();
+
   constructor(private router: Router) { }
 
   ngOnInit() {
   }
 
   updateEmployee(id: string) {
-    this.router.navigate(['employees', id, 'edit'])
+    this.router.navigate(['employees', id])
+  }
+
+  deleteEmployee(id) {
+    this.delete.emit(id);
   }
 
 }
