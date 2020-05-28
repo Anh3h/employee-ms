@@ -3,16 +3,23 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-nav-bar',
   template: `
-    <nav class="navbar navbar-dark bg-primary">
-      <a class="navbar-brand" routerLink="">EmployeeDATA</a>
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" routerLink="">Home</a>
-        </li>
-      </ul>
-    </nav>
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/" routerLinkActive="active"
+          [routerLinkActiveOptions]="{exact: true}">HOME</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/employees" routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}">EMPLOYEES</a>
+      </li>
+    </ul>
   `,
-  styleUrls: ['./nav-bar.component.css']
+  styles: [`
+    a, a:hover {text-decoration: underline}
+    a:hover {color: #007bff}
+    ul {padding-top: 2%}
+    a.active {text-decoration: none}
+  `]
 })
 export class NavBarComponent implements OnInit {
 
