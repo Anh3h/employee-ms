@@ -26,7 +26,7 @@ export class EmployeeService {
       );
   }
 
-  getEmployee(id: number): Observable<Employee> {
+  getEmployee(id: string): Observable<Employee> {
     return this.http.get(`${this.URL}/${id}`)
       .pipe(
         map((employeeDTO: EmployeeDTO) => mapToModel(employeeDTO)));
@@ -40,7 +40,6 @@ export class EmployeeService {
   }
 
   postEmployee(employee: Employee): Observable<any> {
-    employee.id = `${this.nextID++}`;
     const employeeDTOStr: string = JSON.stringify( mapToDTO(employee) );
 
     return this.http.post(`${this.URL}`, employeeDTOStr, this.headers)

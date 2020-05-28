@@ -13,7 +13,7 @@ import { of, Observable } from 'rxjs';
 export class EditEmployeeContainerComponent implements OnInit {
 
   employee$: Observable<Employee>;
-  id: number;
+  id: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,8 +24,8 @@ export class EditEmployeeContainerComponent implements OnInit {
   ngOnInit() {
     this.employee$ = this.route.paramMap.pipe(
       switchMap((param: ParamMap) => {
-        this.id = +param.get('id');
-        if(isNaN(this.id))
+        this.id = param.get('id');
+        if(this.id == 'new')
           return of(<Employee>{});
         return this.service.getEmployee(this.id);
       })
@@ -33,7 +33,7 @@ export class EditEmployeeContainerComponent implements OnInit {
   }
 
   saveEmployee(employee) {
-    if(isNaN(this.id))
+    if(this.id == 'new')
       return this.createEmployee(employee)
     return this.updateEmployee(employee);
   }
