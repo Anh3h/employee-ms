@@ -5,6 +5,7 @@ import { switchMap } from 'rxjs/operators';
 import { EmployeeService } from '../../services/employee.service';
 import { Employee } from '../../models/Employee';
 import { of, Observable } from 'rxjs';
+import { ToastService } from 'src/app/utils/services/toast.service';
 
 @Component({
   templateUrl: './edit-employee-container.component.html',
@@ -18,7 +19,8 @@ export class EditEmployeeContainerComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private service: EmployeeService
+    private employeeService: EmployeeService,
+    private toastService: ToastService
   ) { }
 
   ngOnInit() {
@@ -27,7 +29,7 @@ export class EditEmployeeContainerComponent implements OnInit {
         this.id = param.get('id');
         if(this.id == 'new')
           return of(<Employee>{});
-        return this.service.getEmployee(this.id);
+        return this.employeeService.getEmployee(this.id);
       })
     );
   }
@@ -39,14 +41,20 @@ export class EditEmployeeContainerComponent implements OnInit {
   }
 
   updateEmployee(employee) {
-    this.service.putEmployee(employee).subscribe(
-      _ => this.router.navigate(['/employees'])
+    this.employeeService.putEmployee(employee).subscribe(
+      () => {
+        this.toastService.show("Successfully updated employee.")
+        this.router.navigate(['/employees'])
+      }
     );
   }
 
   createEmployee(employee) {
-    this.service.postEmployee(employee).subscribe(
-      _ => this.router.navigate(['/employees'])
+    this.employeeService.postEmployee(employee).subscribe(
+      () => {
+        this.toastService.show("Successfully created employee.")
+        this.router.navigate(['/employees'])
+      }
     );
   }
 }
