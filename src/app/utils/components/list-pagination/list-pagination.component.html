@@ -8,5 +8,5 @@
             </span>
         </li>
     </ul>
-    <pagination [totalItems]="totalItems.length" [itemsPerPage]="_pageSize" (pageChanged)="pageChanged($event)"></pagination>
+    <pagination [totalItems]="totalItems?.length" [itemsPerPage]="_pageSize" (pageChanged)="pageChanged($event)"></pagination>
 </div>

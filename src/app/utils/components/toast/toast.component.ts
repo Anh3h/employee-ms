@@ -6,7 +6,7 @@ import { Toast } from '../../models/toast';
   template: `
     <div>
       <alert type="success" [dismissible]="true" [dismissOnTimeout]="3000" (onClosed)="closed()">
-        {{ toast.message }}
+        {{ toast?.message }}
       </alert>
     </div>
   `,

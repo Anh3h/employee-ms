@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ListPaginationComponent } from './list-pagination.component';
+import { PaginationModule } from 'ngx-bootstrap/pagination/pagination.module';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('ListPaginationComponent', () => {
   let component: ListPaginationComponent;
@@ -8,7 +10,10 @@ describe('ListPaginationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ListPaginationComponent ]
+      declarations: [
+        ListPaginationComponent,
+      ],
+      schemas: [NO_ERRORS_SCHEMA]
     })
     .compileComponents();
   }));
