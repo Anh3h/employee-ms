@@ -1,33 +1,56 @@
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
+
 import { AppComponent } from './app.component';
 import { ToastService } from './utils/services/toast.service';
 import { Toast } from './utils/models/toast';
-import { Subject } from 'rxjs';
-import { ToastComponent } from './utils/components/toast/toast.component';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { of } from 'rxjs';
 
 describe('AppComponent', () => {
   let toastService: Partial<ToastService>;
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
+  let mockToastService;
+
+  @Component({
+    selector: 'app-nav-bar',
+    template: `<div>Nav bar...</div>`
+  })
+  class MockNavBarComponent {
+    constructor() { }
+  }
+
+  @Component({
+    selector: 'app-toast',
+    template: `<div>Toastr ...</div> `
+  })
+  class MockToastComponent {
+
+    @Input()
+    toast: Toast;
+
+    @Output()
+    closedToast = new EventEmitter<Toast> ();
+
+    constructor() { }
+
+  }
 
   beforeEach(async(() => {
-
-    let toastServiceStub = {
-      toasts: [],
-      toastsObservable: new Subject<Toast[]>()
-    }
+    mockToastService = jasmine.createSpyObj('mockToastService', ['getToasts', 'remove'])
 
     TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule.withRoutes([])
+      ],
       declarations: [
         AppComponent,
-        NavBarComponent,
-        ToastComponent
+        MockNavBarComponent,
+        MockToastComponent
       ],
-      schemas: [NO_ERRORS_SCHEMA],
-      providers: [{ provide: ToastService, useValue: toastServiceStub }]
+      providers: [{ provide: ToastService, useValue: mockToastService }]
     }).compileComponents();
   }));
 
@@ -35,21 +58,39 @@ describe('AppComponent', () => {
     toastService = TestBed.get(ToastService);
     fixture = TestBed.createComponent(AppComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create the app', () => {
+    fixture.detectChanges();
     expect(component).toBeTruthy();
   });
 
-  // it(`should have as title 'weather-app'`, () => {
+  it('should render toast from toast service', () => {
+    mockToastService.getToasts.and.returnValue( of([<Toast> {id: 1, message: 'Successfully created employee'}]) );
+    fixture.detectChanges();
 
-  // });
+    expect(fixture.debugElement.queryAll(By.css('app-toast')).length).toBe(1);
+  });
 
-  // it('should render title in a h1 tag', () => {
-  //   const fixture = TestBed.createComponent(AppComponent);
-  //   fixture.detectChanges();
-  //   const compiled = fixture.debugElement.nativeElement;
-  //   expect(compiled.querySelector('h1').textContent).toContain('Welcome to weather-app!');
-  // });
+  it('should close the toast when app-toast emits a closedToast event', () => {
+    let toasts = [
+      {id: 1, message: 'Successfully created employee'},
+      {id: 2, message: 'Successfully updated employee'}
+    ];
+    mockToastService.getToasts.and.returnValue(of(toasts))
+    spyOn(component, 'closeToast')
+    fixture.detectChanges();
+
+    const firstToastComponent = fixture.debugElement.queryAll(By.css('app-toast'))[0].componentInstance;
+    firstToastComponent.closedToast.emit(toasts[0]);
+
+    expect(component.closeToast).toHaveBeenCalled();
+    expect(component.closeToast).toHaveBeenCalledWith(toasts[0]);
+  })
+
+  it('should call toastService.remove method when closeToast is called', () => {
+    component.closeToast(<Toast> {id: 1, message: 'Successfully created employee'});
+
+    expect(toastService.remove).toHaveBeenCalled();
+  })
 });

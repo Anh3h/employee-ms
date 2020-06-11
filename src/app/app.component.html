@@ -3,8 +3,8 @@
   <div class="toastr">
     <app-toast
       [toast]="toast"
-      (closedToast)="closedToast($event)"
-      *ngFor="let toast of toasts | async"
+      (closedToast)="closeToast($event)"
+      *ngFor="let toast of toasts$ | async"
     ></app-toast>
   </div>
   <router-outlet></router-outlet>

@@ -3,6 +3,7 @@ import { EmployeeService } from '../services/employee.service';
 
 import { tap } from 'rxjs/operators'
 import { Router } from '@angular/router';
+import { ToastService } from 'src/app/utils/services/toast.service';
 
 @Component({
   templateUrl: './employees-container.component.html',
@@ -14,6 +15,7 @@ export class EmployeesContainerComponent implements OnInit {
 
   constructor(
     private employeeService: EmployeeService,
+    private toastService: ToastService,
     private router: Router
   ) { }
 
@@ -23,6 +25,9 @@ export class EmployeesContainerComponent implements OnInit {
 
   deleteEmployee(id) {
     this.employeeService.deleteEmployee(id)
-      .subscribe(_ => this.router.navigate(['..']));
+      .subscribe(_ => {
+        this.toastService.show("Successfully deleted employee.");
+        this.router.navigate(['..']);
+      });
   }
 }
