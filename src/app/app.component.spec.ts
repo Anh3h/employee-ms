@@ -1,12 +1,12 @@
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { By } from '@angular/platform-browser';
 import { RouterTestingModule } from '@angular/router/testing';
+import { By } from '@angular/platform-browser';
+import { of } from 'rxjs';
 
 import { AppComponent } from './app.component';
 import { ToastService } from './utils/services/toast.service';
 import { Toast } from './utils/models/toast';
-import { of } from 'rxjs';
 
 describe('AppComponent', () => {
   let toastService: Partial<ToastService>;

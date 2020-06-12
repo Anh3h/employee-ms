@@ -13,7 +13,7 @@ export class ListPaginationComponent implements OnInit {
   _totalItems: any[];
 
   @Input()
-  attribute: string;
+  displayAttribute: string;
 
   @Input()
   set pageSize(pageSize: number) {
