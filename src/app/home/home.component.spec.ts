@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HomeComponent } from './home.component';
+import { By } from '@angular/platform-browser';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -21,5 +22,11 @@ describe('HomeComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should have a "browse" link to the employee\'s page', () => {
+    let ref = fixture.debugElement.query(By.css('a')).nativeElement.getAttribute('routerLink');
+
+    expect(ref).toBe('employees');
   });
 });
