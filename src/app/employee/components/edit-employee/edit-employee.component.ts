@@ -21,7 +21,7 @@ export class EditEmployeeComponent implements OnInit {
   }
 
   @Output()
-  onUpdateEmployee = new EventEmitter<Employee>();
+  onSaveEmployee = new EventEmitter<Employee>();
 
   employeeForm: FormGroup = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -36,7 +36,7 @@ export class EditEmployeeComponent implements OnInit {
   updateForm() {
     if(this.employeeForm.valid) {
       let updatedForm = { ...this._employee, ...this.employeeForm.value }
-      this.onUpdateEmployee.emit(updatedForm);
+      this.onSaveEmployee.emit(updatedForm);
     }
   }
 

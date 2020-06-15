@@ -36,15 +36,15 @@ export class EditEmployeeContainerComponent implements OnInit {
 
   saveEmployee(employee) {
     if(this.id == 'new')
-      return this.createEmployee(employee)
+      return this.createEmployee(employee);
     return this.updateEmployee(employee);
   }
 
   updateEmployee(employee) {
     this.employeeService.putEmployee(employee).subscribe(
-      () => {
-        this.toastService.show("Successfully updated employee.")
-        this.router.navigate(['/employees'])
+      _ => {
+        this.toastService.show('Successfully updated employee.');
+        this.router.navigate(['/employees']);
       }
     );
   }
@@ -52,7 +52,7 @@ export class EditEmployeeContainerComponent implements OnInit {
   createEmployee(employee) {
     this.employeeService.postEmployee(employee).subscribe(
       () => {
-        this.toastService.show("Successfully created employee.")
+        this.toastService.show('Successfully created employee.')
         this.router.navigate(['/employees'])
       }
     );

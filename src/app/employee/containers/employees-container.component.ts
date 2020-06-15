@@ -4,6 +4,8 @@ import { EmployeeService } from '../services/employee.service';
 import { tap } from 'rxjs/operators'
 import { Router } from '@angular/router';
 import { ToastService } from 'src/app/utils/services/toast.service';
+import { Observable } from 'rxjs';
+import { Employee } from '../models/Employee';
 
 @Component({
   templateUrl: './employees-container.component.html',
@@ -11,7 +13,7 @@ import { ToastService } from 'src/app/utils/services/toast.service';
 })
 export class EmployeesContainerComponent implements OnInit {
 
-  employees$;
+  employees$: Observable<Employee[]>;
 
   constructor(
     private employeeService: EmployeeService,
