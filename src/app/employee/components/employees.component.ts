@@ -24,7 +24,7 @@ export class EmployeesComponent implements OnInit {
     this.router.navigate(['employees', id])
   }
 
-  deleteEmployee(id) {
+  deleteEmployee(id: string) {
     this.delete.emit(id);
   }
 

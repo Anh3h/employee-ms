@@ -21,10 +21,11 @@ export class ToastService {
     let toast = <Toast> { id, message }
 
     this.toasts.push(toast);
-    this._toasts$.next(this.toasts)
+    this._toasts$.next(this.toasts);
   }
 
   remove(id: number) {
-    this.toasts = this.toasts.filter(toast => toast.id != id)
+    this.toasts = this.toasts.filter(toast => toast.id != id);
+    this._toasts$.next(this.toasts);
   }
 }

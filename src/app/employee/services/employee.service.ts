@@ -32,21 +32,21 @@ export class EmployeeService {
         map((employeeDTO: EmployeeDTO) => mapToModel(employeeDTO)));
   }
 
-  putEmployee(employee: Employee): Observable<any> {
+  putEmployee(employee: Employee): Observable<Employee> {
     const employeeDTOStr: string = JSON.stringify( mapToDTO(employee) );
 
     return this.http.put(`${this.URL}/${employee.id}`, employeeDTOStr, this.headers)
       .pipe(map((employeeDTO: EmployeeDTO) => mapToModel(employeeDTO)));
   }
 
-  postEmployee(employee: Employee): Observable<any> {
+  postEmployee(employee: Employee): Observable<Employee> {
     const employeeDTOStr: string = JSON.stringify( mapToDTO(employee) );
 
     return this.http.post(`${this.URL}`, employeeDTOStr, this.headers)
       .pipe(map((employeeDTO: EmployeeDTO) => mapToModel(employeeDTO)));
   }
 
-  deleteEmployee(employeeId: number): Observable<any> {
+  deleteEmployee(employeeId: string): Observable<any> {
     return this.http.delete(`${this.URL}/${employeeId}`, this.headers);
   }
 }

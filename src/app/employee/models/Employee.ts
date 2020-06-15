@@ -10,10 +10,10 @@ export interface EmployeeDTO {
     employee_name: string,
     employee_salary: number,
     employee_age: number,
-    profile_image: number
+    profile_image: string
 }
 
-export function mapToDTO(employee: Employee) {
+export function mapToDTO(employee: Employee): EmployeeDTO {
     let employeeDTO = <EmployeeDTO>{};
 
     employeeDTO.id = employee.id;
@@ -24,7 +24,7 @@ export function mapToDTO(employee: Employee) {
     return employeeDTO;
 }
 
-export function mapToModel(employeeDTO: EmployeeDTO) {
+export function mapToModel(employeeDTO: EmployeeDTO): Employee {
     let employee = <Employee>{};
 
     employee.id = employeeDTO.id;
