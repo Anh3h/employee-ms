@@ -1,16 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RouterTestingModule } from '@angular/router/testing';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { By } from '@angular/platform-browser';
+import { of } from 'rxjs';
 
 import { EditEmployeeContainerComponent } from './edit-employee-container.component';
-import { EditEmployeeComponent } from '../../components/edit-employee/edit-employee.component';
-import { RouterTestingModule } from '@angular/router/testing';
 import { EmployeeService } from '../../services/employee.service';
 import { ToastService } from 'src/app/utils/services/toast.service';
-import { ActivatedRoute, ParamMap } from '@angular/router';
-import { of } from 'rxjs';
-import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Employee } from '../../models/Employee';
-import { By } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-edit-employee',

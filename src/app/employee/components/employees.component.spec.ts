@@ -1,9 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { EmployeesComponent } from './employees.component';
 import { Component, Input, EventEmitter, Output } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { By } from '@angular/platform-browser';
+
+import { EmployeesComponent } from './employees.component';
 
 @Component({
   selector: 'app-list-pagination',

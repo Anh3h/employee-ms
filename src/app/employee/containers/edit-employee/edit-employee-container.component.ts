@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
+import { of, Observable } from 'rxjs';
 
+import { ToastService } from 'src/app/utils/services/toast.service';
 import { EmployeeService } from '../../services/employee.service';
 import { Employee } from '../../models/Employee';
-import { of, Observable } from 'rxjs';
-import { ToastService } from 'src/app/utils/services/toast.service';
 
 @Component({
   templateUrl: './edit-employee-container.component.html',

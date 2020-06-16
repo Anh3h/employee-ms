@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
+
 import { Employee } from '../models/Employee';
 
 @Component({
@@ -21,7 +22,7 @@ export class EmployeesComponent implements OnInit {
   }
 
   updateEmployee(id: string) {
-    this.router.navigate(['employees', id])
+    this.router.navigate(['employees', id]);
   }
 
   deleteEmployee(id: string) {

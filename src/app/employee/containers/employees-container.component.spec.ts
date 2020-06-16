@@ -1,14 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { RouterTestingModule } from '@angular/router/testing';
+import { By } from '@angular/platform-browser';
+import { of } from 'rxjs';
 
 import { EmployeesContainerComponent } from './employees-container.component';
-import { EmployeesComponent } from '../components/employees.component';
-import { ListPaginationComponent } from 'src/app/utils/components/list-pagination/list-pagination.component';
-import { NO_ERRORS_SCHEMA, Component, Input, Output, EventEmitter } from '@angular/core';
 import { EmployeeService } from '../services/employee.service';
-import { RouterTestingModule } from '@angular/router/testing';
 import { Employee } from '../models/Employee';
-import { of } from 'rxjs';
-import { By } from '@angular/platform-browser';
 import { ToastService } from 'src/app/utils/services/toast.service';
 
 @Component({
@@ -18,7 +16,7 @@ import { ToastService } from 'src/app/utils/services/toast.service';
 class MockEmployeesComponent {
 
   @Input()
-  employees
+  employees;
 
   @Output()
   delete = new EventEmitter<Employee>();
@@ -94,5 +92,5 @@ describe('EmployeesContainerComponent', () => {
 
     expect(employeeService.deleteEmployee).toHaveBeenCalled();
     expect(toastService.show).toHaveBeenCalled();
-  })
+  });
 });

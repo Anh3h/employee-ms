@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeeService } from '../services/employee.service';
-
-import { tap } from 'rxjs/operators'
 import { Router } from '@angular/router';
-import { ToastService } from 'src/app/utils/services/toast.service';
 import { Observable } from 'rxjs';
+
+import { ToastService } from 'src/app/utils/services/toast.service';
+import { EmployeeService } from '../services/employee.service';
 import { Employee } from '../models/Employee';
 
 @Component({

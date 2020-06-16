@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+
 import { ToastService } from './utils/services/toast.service';
 import { Toast } from './utils/models/toast';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',

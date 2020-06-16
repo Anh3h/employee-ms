@@ -1,9 +1,8 @@
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing'
 
 import { EmployeeService } from './employee.service';
 import { Employee, EmployeeDTO } from '../models/Employee';
-import { HttpClient } from '@angular/common/http';
 
 describe('EmployeeService', () => {
   const employee = <Employee>{ id: 'ru2862s', name: 'Samuel Johnson', salary: 125000, age: 56 };
@@ -33,11 +32,11 @@ describe('EmployeeService', () => {
     const employees: Employee[] = [
       { id: 'ru2862s', name: 'Samuel Johnson', salary: 125000, age: 56 },
       { id: 'iuy5688', name: 'Jane Doe', salary: 70000, age: 25 }
-    ]
+    ];
     let employeeDTOs: EmployeeDTO[] = [
       { id: 'ru2862s', employee_name: 'Samuel Johnson', employee_salary: 125000, employee_age: 56, profile_image: '' },
       { id: 'iuy5688', employee_name: 'Jane Doe', employee_salary: 70000, employee_age: 25, profile_image: '' }
-    ]
+    ];
 
     service.getEmployees().subscribe(empls => {
       expect(empls.length).toEqual(employees.length);

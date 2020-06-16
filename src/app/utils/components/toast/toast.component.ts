@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, Input, Output, EventEmitter } from '@angular/core';
+
 import { Toast } from '../../models/toast';
 
 @Component({

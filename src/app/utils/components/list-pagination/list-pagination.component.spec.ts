@@ -1,8 +1,8 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 
 import { ListPaginationComponent } from './list-pagination.component';
-import { By } from '@angular/platform-browser';
 
 describe('ListPaginationComponent', () => {
   let component: ListPaginationComponent;
@@ -93,7 +93,7 @@ describe('ListPaginationComponent', () => {
       { id: 'iuy5688', name: 'Jane Doe', salary: 70000, age: 25 },
       { id: 'oiuy56h', name: 'Mike Perry', salary: 90000, age: 30 }
     ];
-    spyOn(component, 'deleteItem')
+    spyOn(component, 'deleteItem');
     fixture.detectChanges();
 
     fixture.debugElement.query(By.css('li .delete-btn')).nativeElement.click();
@@ -117,12 +117,12 @@ describe('ListPaginationComponent', () => {
       { id: 'ru2862s', name: 'Samuel Johnson', salary: 125000, age: 56 },
       { id: 'iuy5688', name: 'Jane Doe', salary: 70000, age: 25 }
     ];
-    spyOn(component, 'pageChanged')
+    spyOn(component, 'pageChanged');
     fixture.detectChanges();
 
     let pagination = fixture.debugElement.query(By.css('pagination')).componentInstance;
     pagination.pageChanged.emit();
 
     expect(component.pageChanged).toHaveBeenCalled();
-  })
+  });
 });

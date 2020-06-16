@@ -19,7 +19,7 @@ describe('ToastService', () => {
     service.getToasts().subscribe(tst => toasts = tst);
     service.show('Success Message');
 
-    expect(toasts.length).toBe(1)
+    expect(toasts.length).toBe(1);
   });
 
   it('should remove message from pending stack when remove request is made', () => {
@@ -29,6 +29,6 @@ describe('ToastService', () => {
     expect(toasts.length).toBe(1)
 
     service.remove(toasts[0].id);
-    expect(toasts.length).toBe(0)
+    expect(toasts.length).toBe(0);
   })
 });

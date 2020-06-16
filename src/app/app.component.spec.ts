@@ -77,8 +77,8 @@ describe('AppComponent', () => {
       {id: 1, message: 'Successfully created employee'},
       {id: 2, message: 'Successfully updated employee'}
     ];
-    mockToastService.getToasts.and.returnValue(of(toasts))
-    spyOn(component, 'closeToast')
+    mockToastService.getToasts.and.returnValue(of(toasts));
+    spyOn(component, 'closeToast');
     fixture.detectChanges();
 
     const firstToastComponent = fixture.debugElement.queryAll(By.css('app-toast'))[0].componentInstance;

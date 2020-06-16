@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map, tap, catchError } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+
 import { Employee, mapToModel, EmployeeDTO, mapToDTO } from '../models/Employee';
 
 @Injectable({
