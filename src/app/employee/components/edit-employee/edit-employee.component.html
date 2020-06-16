@@ -3,7 +3,7 @@
         <a routerLink="..">&#8592; Back</a>
     </div>
     <div class="card">
-        <form [formGroup]="employeeForm" (ngSubmit)="updateForm()">
+        <form [formGroup]="employeeForm" (ngSubmit)="saveForm()">
             <div class="form-group row">
                 <label for="name" class="col-lg-2">Name:</label>
                 <div class="col-lg-10 name">
@@ -21,9 +21,9 @@
                 </div>
                 <div class="col-md-5">
                     <div class="form-group row">
-                        <label for="salary" class="col-lg-3">Age:</label>
+                        <label for="age" class="col-lg-3">Age:</label>
                         <div class="col-md-9">
-                            <input type="number" id="salary" class="form-control" formControlName="age" [min]="minAge" required/>
+                            <input type="number" id="age" class="form-control" formControlName="age" [min]="minAge" required/>
                         </div>
                     </div>
                 </div>

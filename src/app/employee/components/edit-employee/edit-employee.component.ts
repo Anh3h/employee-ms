@@ -33,9 +33,9 @@ export class EditEmployeeComponent implements OnInit {
 
   ngOnInit() {}
 
-  updateForm() {
+  saveForm() {
     if(this.employeeForm.valid) {
-      let updatedForm = { ...this._employee, ...this.employeeForm.value }
+      let updatedForm = { ...this._employee, ...this.employeeForm.value };
       this.onSaveEmployee.emit(updatedForm);
     }
   }
